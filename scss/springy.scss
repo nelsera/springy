@@ -1,0 +1,15 @@
+/*! ============================================
+ *       Springy
+ * ===========================================*/
+
+// custom settings
+@import "settings";                   // customizable settings
+
+// core
+@import "core/all-core";              // constants, defaults, mixins
+@import "base/all-base";              // reset, globals, grid, helpers, animations
+
+// components
+@import "type/all-type";              // typography, web fonts
+@import "icons/all-icons";            // font awesome
+@import "nav/all-nav";                // buttons, navigation, tabs

@@ -1,0 +1,305 @@
+// =============================================
+//              Default Settings
+//          Last Updated:2013-6-24
+// =============================================
+
+
+///////////////////////
+//     framework     //
+///////////////////////
+
+// file paths
+$root_path:           "../" !default;      // path to HTML document root (relative from CSS)
+$images_path:         "images/" !default;  // path to images (relative from $root_path)
+$fonts_path:          "fonts/" !default;    // path to fonts (relative from $root_path)
+$boxsizing_path:      "/js/libs/boxsizing.htc" !default;  // path to box sizing polyfill (change to absolute path from HTML document root)
+
+// build options
+$reset:               true !default;       // enable CSS reset (recommended)
+// elements that will be reset (refine this to only include elements that you actually use in your markup patterns for optimal performance)
+$reset-elements:      html body
+                      div span header footer aside nav menu section article details
+                      h1 h2 h3 h4 h5 h6 p
+                      ol ul li dl dt dd
+                      em small big strong b u i sub sup del strike
+                      blockquote cite pre code time address
+                      a img center hr
+                      form fieldset legend label input textarea button
+                      table caption tbody thead tfoot tr th td
+                      iframe object canvas audio video !default;
+
+$global-tags:         true !default;       // enable output in base/_global.scss  (recommended)
+
+// grid settings
+$grid-classes:        true !default;       // enable output of grid classes       (recommended)
+$numerators:          one    two    three  four    five   six    seven    eight   nine   ten    eleven    twelve !default;
+$denominators:        whole  half   third  fourth  fifth  sixth  seventh  eighth  ninth  tenth  eleventh  twelfth !default;
+$denominators-plural: wholes halves thirds fourths fifths sixths sevenths eighths ninths tenths elevenths twelfths !default;
+$grid-adapters:       $one-whole $one-half $one-third $one-fourth $one-fifth !default;
+$max-width:           1200px !default;     // maximum container width (i.e. - 960px)
+$gutter:              10px !default;       // gutter spacing (used by padded/gapped helpers, elements with padding, etc.)
+
+// helper settings
+$layout-classes:      true !default;       // enable output of layout helpers     (recommended)
+$layout-helpers:      inline block
+                      hidden
+                      disabled
+                      zero
+                      pull-right pull-left clear
+                      center !default;
+
+$positioning-classes: true !default;       // enable output of position helpers   (optional)
+
+$size-classes:        true !default;       // enable output of size helpers       (recommended)
+$size-helpers:        small large !default;
+
+$typography-classes:  true !default;       // enable output of typography helpers (recommended)
+$typography-helpers:  align-top align-right align-bottom align-left align-center justify
+                      truncate !default;
+
+$border-classes:      true !default;       // enable output of border helpers     (optional)
+$border-helpers:      bordered border-right border-left border-top border-bottom !default;
+
+// round/square
+$default-radius:      4px !default;
+$radius-classes:      true !default;       // enable output of radius helpers     (optional)
+$radius-helpers:      square round !default;
+
+// rotation
+$rotation-classes:    true !default;       // enable output of rotational helpers (optional)
+$rotation-helpers:    rotate-90 rotate-180 rotate-270 rotate-90-ctr rotate-180-ctr rotate-270-ctr !default;
+
+// spinners
+$spin-classes:        true !default;       // enable output of spin helpers       (optional)
+$spin-helpers:        spin spin-once spin-twice spin-thrice
+                      spin-fast spin-fast-once spin-fast-twice spin-fast-thrice
+                      spin-slow spin-slow-once spin-slow-twice spin-slow-thrice !default;
+
+// spacers
+$spacer-classes:      true !default;       // enable output of spacer helpers     (recommended)
+$spacer-helpers:      padded pad-top pad-right pad-bottom pad-left
+                      gapped gap-top gap-right gap-bottom gap-left !default;
+
+// spacer multipliers
+$spacer-mod-classes:  true !default;       // enable output of spacer modifiers   (optional)
+$spacer-modifiers:    double triple !default;
+
+// states
+$ui-states:           disabled info alert warning error success !default;
+$button-states:       on active disabled info alert warning error success !default;
+
+// typography
+$type-tags:           true !default;       // enable output of type selectors     (recommended)
+$type-elements:       h1 h2 h3 h4 h5 h6 p
+                      ul ol dl
+                      blockquote cite
+                      small big em b strong
+                      sup sub
+                      del strike
+                      code pre !default;
+$type-colors:         true !default;       // enable output of colors classes     (optional)
+$type-classes:        false !default;      // enable output of type classes       (optional)
+$type-classnames:     h1 h2 h3 h4 h5 h6 p
+                      ul ol dl
+                      blockquote cite
+                      small big large
+                      b bold strong
+                      em italic
+                      sup sub
+                      del strike
+                      code pre
+                      invalid valid
+                      unstyled !default;
+$styled-lists:        true !default;       // enable output of styled lists       (optional)
+
+// webfonts
+$webfont-classes:     true !default;       // enable output of webfont classes    (optional)
+
+// buttons
+$button-tags:         true !default;       // enable output of button selectors   (recommended)
+$button-classes:      true !default;       // enable output of button classes     (recommended)
+$button-modifiers:    small large on active square round block !default;
+
+// navigation
+$nav-tags:            true !default;       // enable output of nav selectors      (optional)
+$nav-classes:         true !default;
+
+// tabs
+$tab-classes:         true !default;       // enable output of tab classes        (optional)
+
+// forms
+$form-tags:           true !default;       // enable output of form selectors     (recommended)
+$form-classes:        false !default;      // enable output of form classes       (optional)
+$form-elements:       fieldset legend label input textarea !default;
+
+// tiles
+$tiles:               true !default;       // enable output of tile classes       (optional)
+$tile-modifiers:      on active small large square round disabled !default;
+
+// message & callout boxes
+$ui-classes:          true !default;
+$ui-modifiers:        dismissible !default;
+
+// tables
+$table-tags:          true !default;
+$table-classes:       true !default;
+
+// ARIA role selectors (WIP - nav, buttons, tabs, etc.)
+$aria-selectors:      true !default;       // enable Aria role selectors
+
+// Compass default transition settings
+$default-transition-property: all;
+$default-transition-duration: 0.2s;
+
+
+///////////////////////
+//     typography    //
+///////////////////////
+
+// typography
+$base-font-size:      16px !default;        // already set by Compass
+$base-line-height:    24px !default;        // already set by Compass
+$font-family:         Helvetica, Arial, Geneva, sans-serif !default;
+
+
+///////////////////////
+//     web fonts     //
+///////////////////////
+
+// font names (no spaces or special characters, these are used to build selectors)
+$web-font-names:      AverageSans,
+                      AmericanTypewriter !default;
+// font files (must all be named the same as listed below and include .eot, .woff and .ttf file types)
+$web-font-files:      average-sans-webfont,
+                      americantypewriterstd-bold !default;
+
+
+///////////////////////
+//       colors      //
+///////////////////////
+
+// base styles
+$background-color:    #ffffff !default;
+$font-color:          #2b2b2d !default;
+
+// links
+$link-color:          #489AC1 !default;
+$link-active:         #198D98 !default;
+
+// selection highlight
+$selection-color:     $link-color !default;
+$selection-text:      #ffffff !default;
+
+// borders
+$border-thickness:    1px !default;
+$border-style:        solid !default;
+$border-color:        #dddddd !default;
+$border:              #{$border-thickness} #{$border-style} #{$border-color} !default;
+
+// buttons
+$button-color:        #1DABB8 !default;
+$button-border-color: darken($button-color, 10%) !default;
+$button-active:       #198D98 !default;
+$button-text:         #ffffff !default;
+$button-active-text:  #ffffff !default;
+
+// info
+$info-color:          #3a87ad !default; // text only
+$info-text:           #ffffff !default; // box text
+$info-background:     #d9edf7 !default;
+$info-border:         #bce8f1 !default;
+
+// alert
+$alert-color:         #c09853 !default; // text only
+$alert-text:          #ffffff !default; // box text
+$alert-background:    #fcf8e3 !default;
+$alert-border:        #fbeee0 !default;
+
+// error
+$error-color:         #b94a48 !default; // text only
+$error-text:          #ffffff !default; // box text
+$error-background:    #f2dede !default;
+$error-border:        #eed3d7 !default;
+
+// warning
+$warning-color:       #FF971E !default; // text only
+$warning-text:        #ffffff !default; // box text
+$warning-background:  #FFE5C7 !default;
+$warning-border:      #FFDBB3 !default;
+
+// success
+$success-color:       #468847 !default; // text only
+$success-text:        #ffffff !default; // box text
+$success-background:  #dff0d8 !default;
+$success-border:      #d6e9c6 !default;
+
+// disabled
+$disabled-color:      #808080 !default; // text only
+$disabled-text:       #ffffff !default; // box text
+$disabled-background: lighten($disabled-color, 20%) !default;
+$disabled-border:     darken($disabled-color, 10%) !default;
+
+// modifier states
+$state-name:          "info"       "alert"       "warning"       "error"       "success"       "disabled"       !default;
+$state-code:          $info-color  $alert-color  $warning-color  $error-color  $success-color  $disabled-color  !default;
+$state-text:          $info-text   $alert-text   $warning-text   $error-text   $success-text   $disabled-text   !default;
+
+// modifier colors
+$green:               #2ecc71 !default;
+$blue:                #3498db !default;
+$purple:              #9b59b6 !default;
+$yellow:              #f1c40f !default;
+$orange:              #e67e22 !default;
+$red:                 #e74c3c !default;
+$pink:                #f02475 !default;
+$turquoise:           #1abc9c !default;
+$asphalt:             #34495e !default;
+
+$modifier-name:       "green"   "blue"   "purple"   "yellow"   "orange"   "red"   "pink"   "turquoise"   "asphalt"  !default;
+$modifier-code:       $green    $blue    $purple    $yellow    $orange    $red    $pink    $turquoise    $asphalt   !default;
+$modifier-text:       $white    $white   $white     $white     $white     $white  $white   $white        $white     !default;
+
+
+///////////////////////
+//      modals       //
+///////////////////////
+
+// overlay
+$overlay-color:                   #0b0b0b !default;                    // Color of overlay screen
+$overlay-opacity:                 0.5 !default;                        // Opacity of overlay screen
+$shadow:                          0 0 8px rgba(0, 0, 0, 0.6) !default; // Shadow on image or iframe
+
+// spacing
+$popup-padding-left:              8px !default;                        // Padding from left and from right side
+$popup-padding-left-mobile:       6px !default;                        // Same as above, but is applied when width of window is less than 800px
+
+$z-index-base:                    500 !default;                        // Base z-index of popup
+
+// controls
+$include-arrows:                  true !default;                       // Include styles for nav arrows
+$controls-opacity:                0.65 !default;                       // Opacity of controls
+$controls-color:                  #FFF !default;                       // Color of controls
+$inner-close-icon-color:          #333 !default;                       // Color of close button when inside
+$controls-text-color:             #CCC !default;                       // Color of preloader and '1 of X' indicator
+$controls-text-color-hover:       #FFF !default;                       // Hover color of preloader and '1 of X' indicator
+$IE7support:                      true !default;                       // Very basic IE7 support
+
+// Inline-type options
+$modal-max-width:                 $max-width !default;                 // Maximum width of inline modals
+
+// Iframe-type options
+$include-iframe-type:             true !default;                       // Enable Iframe-type popups
+$iframe-padding-top:              ($gutter*4) !default;                // Iframe padding top
+$iframe-background:               #000 !default;                       // Background color of iframes
+$iframe-max-width:                $max-width !default;                 // Maximum width of iframes
+$iframe-ratio:                    9/16 !default;                       // Ratio of iframe (9/16 = widescreen, 3/4 = standard, etc.)
+
+// Image-type options
+$include-image-type:              true !default;                       // Enable Image-type popups
+$image-padding-top:               ($gutter*4) !default;                // Image padding top
+$image-padding-bottom:            ($gutter*4) !default;                // Image padding bottom
+$include-mobile-layout-for-image: true !default;                       // Removes paddings from top and bottom
+
+// Image caption options
+$caption-title-color:             #F3F3F3 !default;                    // Caption title color
+$caption-subtitle-color:          #BDBDBD !default;                    // Caption subtitle color

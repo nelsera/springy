@@ -1,0 +1,207 @@
+// =============================================
+//              Global Mixins
+//          Last Updated:2013-4-24
+// =============================================
+
+
+
+
+///////////////////////
+//    helper reset   //
+///////////////////////
+
+@mixin helper_reset($properties: padding margin, $spacers: padded pad-top pad-right pad-bottom pad-left gapped gap-top gap-right gap-bottom gap-left) {
+  @for $i from 1 through length($spacers) {
+    &.#{nth($spacers, $i)}, &.#{nth($spacers, $i)}.double, &.#{nth($spacers, $i)}.triple {
+      @for $i from 1 through length($properties) {
+        #{nth($properties, $i)}: 0 !important;
+      }
+    }
+  }
+}
+
+
+///////////////////////
+//     functions     //
+///////////////////////
+
+// strip unit of measurement from a value
+@function numericvalue($val) {
+  $unit: unit($val);
+  $number: $val / ($val * 0 + 1);
+  @return $number;
+}
+
+
+///////////////////////
+//     utilities     //
+///////////////////////
+
+// inline image with fallback support for IE 7-
+@mixin data-image($file) {
+  background-image: url("#{$root_path}#{$images_path}#{$file}");        // fallback
+  background-image: inline-image($file);                                // data URI
+  *background-image: url("#{$root_path}#{$images_path}#{$file}");       // IE7- hack
+}
+
+// gradient
+@mixin gradient($startColor: $white, $endColor: $gray-2, $direction: "top") {
+  @include background-image(linear-gradient($direction, $startColor, $endColor));
+}
+
+// filter drop shadow
+@mixin filter-shadow($color: rgba(0,0,0,0.2), $blur: 0, $x: 0, $y: 0) {
+  -ms-filter: drop-shadow($x $y $blur $color);                          // IE9+
+  -o-filter: drop-shadow($x $y $blur $color);                           // Opera
+  -moz-filter: drop-shadow($x $y $blur $color);                         // Firefox
+  -webkit-filter: drop-shadow($x $y $blur $color);                      // Webkit (Safari, Chrome, other)
+  filter: drop-shadow($x $y $blur $color);
+  @media #{$retina} {
+    -ms-transform: translateZ(0);                                       // make filter nice and crisp on retina devices
+    -o-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+// inner box shadow
+@mixin inner-shadow($color, $blur: 0, $x: 0, $y: 0) {
+  -ms-box-shadow: inset $x $y $blur $color;                             // IE10+
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=#{$blur}, Direction=135, Color='#{ie-hex-str($color)}')";  // IE8
+  filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=#{$blur}, Direction=135, Color='#{ie-hex-str($color)}')";      // IE7-
+  -o-box-shadow: inset $x $y $blur $color;                              // Opera
+  -moz-box-shadow: inset $x $y $blur $color;                            // Firefox
+  -webkit-box-shadow: inset $x $y $blur $color;                         // Webkit (Safari, Chrome, other)
+  box-shadow: inset $x $y $blur $color;
+}
+
+// text/UI Element states
+@mixin state($state: "disabled", $mode: normal, $color: default) {
+  @if $color == "default" {
+    @if $state == "disabled" {
+      $color: $disabled-color;
+    }@else if $state == "info" {
+      $color: $info-color;
+    }@else if $state == "success" {
+      $color: $success-color;
+    }@else if $state == "warning" {
+      $color: $warning-color;
+    }@else if $state == "error" {
+      $color: $error-color;
+    }
+  }
+  color: lighten($color, 35%);
+  @if $mode != "textOnly" {
+  background: lighten($color, 15%);
+  border-color: $color;
+  }
+  @if $state == "disabled" {
+  cursor: not-allowed;
+  text-decoration: none;
+  outline: none;
+    &:hover, &:focus, &:visited {
+      color: lighten($color, 35%);
+      @if $mode != "textOnly" {
+      background: lighten($color, 15%);
+      border-color: $color;
+      }
+      cursor: not-allowed;
+      text-decoration: none;
+      outline: none;
+    }
+  }
+}
+
+
+///////////////////////
+//    CSS3 helpers   //
+///////////////////////
+
+// rounded corners
+@mixin rounded($radius: $default-radius) {
+  @if $radius == "0" or $radius == "0px" or $radius == "none" {
+    // no output if $default-radius is set to a zero value
+  } @else {
+    @include border-radius($radius);
+  }
+}
+
+// animations
+@mixin animation($animation: spin, $count: infinite, $speed: 2s, $easing: linear) {
+  -moz-animation: $animation $speed $easing;
+  -moz-animation-iteration-count: $count;
+  -o-animation: $animation $speed $easing;
+  -o-animation-iteration-count: $count;
+  -webkit-animation: $animation $speed $easing;
+  -webkit-animation-iteration-count: $count;
+  animation: $animation $speed $easing;
+  animation-iteration-count: $count;
+}
+// deprecated, use animation() now instead
+@mixin spin($count: infinite, $speed: 2s) {
+  @include animation(spin, $count, $speed);
+}
+
+
+///////////////////////
+//       fonts       //
+///////////////////////
+
+// font stacks
+@mixin font-stack($primaryFont: "", $secondaryFont: "", $fallbackFonts: $font-family) {
+  // might add inline-font-files() at some point
+  @if $secondaryFont != "" {
+    font-family: #{$primaryFont}, #{$secondaryFont}, #{$fallbackFonts};
+  } @else {
+    @if $primaryFont != "" {
+      font-family: #{$primaryFont}, #{$fallbackFonts};
+    } @else {
+      font-family: #{$fallbackFonts};
+    }
+  }
+}
+
+///////////////////////
+//    Font Awesome   //
+///////////////////////
+
+@mixin icon($icon) {
+  @include icon-FontAwesome();
+  content: $icon;
+}
+
+@mixin icon-FontAwesome() {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  *margin-right: .3em; // fixes ie7 issues
+}
+
+@mixin icon-stack($width: 2em, $height: 2em, $top-font-size: 1em, $base-font-size: 2em) {
+  .icon-stack {
+    position: relative;
+    display: inline-block;
+    width: $width;
+    height: $height;
+    line-height: $width;
+    vertical-align: -35%;
+    [class^="icon-"],
+    [class*=" icon-"] {
+      display: block;
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      font-size: $top-font-size;
+      line-height: inherit;
+      *line-height: $height;
+    }
+    .icon-stack-base {
+      font-size: $base-font-size;
+      *line-height: #{$height / $base-font-size}em;
+    }
+  }
+}

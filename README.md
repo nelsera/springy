@@ -1,4 +1,0 @@
-springy
-=======
-
-Responsive resizer
