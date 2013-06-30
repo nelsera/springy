@@ -1,0 +1,9 @@
+{
+  "name": "springy",
+  "version": "0.1.0-build",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
