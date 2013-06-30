@@ -8,7 +8,7 @@
 
 %everything {
   @include box-sizing(border-box);
-  *behavior: url($boxsizing_path);  // IE 6-7  -- Thank Schepp for the polyfill for legacy IE browsers: https://github.com/Schepp/box-sizing-polyfill
+  //*behavior: url($boxsizing_path);  // IE 6-7  -- Thank Schepp for the polyfill for legacy IE browsers: https://github.com/Schepp/box-sizing-polyfill
   //
   // =======================================================
   //               the better box model
